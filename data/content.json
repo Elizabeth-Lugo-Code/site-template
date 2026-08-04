@@ -75,9 +75,9 @@
   }, 
   "contact": {
     "intro": {
-      "eyebrow": "",
-      "headline": "",
-      "sub": ""
+      "eyebrow": "Get in touch",
+      "headline": "Let's talk about your project.",
+      "sub": "Fill out the form below or reach out directly — we usually respond within one business day."
     },
     "form": {
       "fields": ["name", "email", "phone", "message"],
@@ -93,21 +93,23 @@
   },
   "mission": {
     "intro": {
-      "eyebrow": "",
-      "headline": "",
-      "sub": "",
+      "eyebrow": "Who we are",
+      "headline": "Built on trust, not just transactions.",
+      "sub": "We started this business because we believe people deserve better than the industry standard.",
       "image": ""
     },
     "story": {
-      "eyebrow": "",
-      "headline": "",
-      "body": ""
+      "eyebrow": "Our story",
+      "headline": "How we got started.",
+      "body": "We founded this company after years of seeing customers get talked into upsells they didn't need and left in the dark about timelines. We wanted to build something different — a business where honesty comes first, every single time."
     },
     "values": {
-      "eyebrow": "",
-      "headline": "",
+      "eyebrow": "What we stand for",
+      "headline": "The principles behind every project.",
       "items": [
-        { "title": "", "body": "" }
+        { "title": "Honesty first", "body": "We tell you the truth, even when it's not what you want to hear." },
+        { "title": "Quality over speed", "body": "We'd rather do it right than do it fast." },
+        { "title": "Real communication", "body": "You'll always know exactly where your project stands." }
       ]
     },
     "cta": { "label": "Get in touch", "href": "contact.html" }

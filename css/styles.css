@@ -192,10 +192,7 @@ footer .wrap {
    Controls output from home.js (renderIntro, renderHighlight, renderAbout).
    Only applies where these classes appear — i.e. only on index.html.
    ============================================================ */
-.intro {
-  padding: var(--space-xl) 0;
-  text-align: center;
-}
+.intro { padding-top: var(--space-xl); text-align: center; }
 
 .eyebrow, .section-num {
   font-family: 'IBM Plex Mono', monospace;
@@ -221,7 +218,7 @@ footer .wrap {
   justify-content: center;
 }
 
-.highlight { padding: var(--space-xl) 0; }
+.highlight { padding-top: var(--space-xl); }
 
 .section-head {
   display: flex;
@@ -248,7 +245,7 @@ footer .wrap {
   background: var(--color-primary-tint);
 }
 
-.about { padding: var(--space-xl) 0; }
+.about { padding-top: var(--space-xl); padding-bottom: var(--space-xl); }
 
 
 /* ============================================================
@@ -288,4 +285,106 @@ footer .wrap {
 .reveal.in {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* ============================================================
+   10. MISSION PAGE SECTIONS
+   Controls output from mission.js (renderMissionIntro, renderStory,
+   renderValues, renderMissionCta). Only applies on mission.html.
+   ============================================================ */
+.mission-intro {
+  padding-top: var(--space-xl);
+  text-align: center;
+}
+
+.mission-intro h1 { font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: var(--space-sm); }
+
+.story { padding-top: var(--space-xl); }
+
+.story .body {
+  max-width: 700px;
+  font-size: 1.1rem;
+}
+
+.values { padding-top: var(--space-xl); }
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-md);
+}
+
+.value-card {
+  border: 1px solid var(--color-line);
+  border-radius: 10px;
+  padding: var(--space-md);
+}
+
+.mission-cta {
+  padding: var(--space-xl) 0;
+  text-align: center;
+}
+
+/* ============================================================
+   11. CONTACT PAGE SECTIONS
+   Controls output from contact.js (renderContactIntro,
+   renderContactForm, renderContactInfo). Only applies on contact.html.
+   ============================================================ */
+.contact-intro {
+  padding-top: var(--space-xl);
+  text-align: center;
+}
+
+.contact-intro h1 { font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: var(--space-sm); }
+
+.contact-form-section { padding-top: var(--space-lg); }
+
+#contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-field label {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.form-field input,
+.form-field textarea {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  padding: 12px;
+  border: 1px solid var(--color-line);
+  border-radius: 6px;
+  background: #fff;
+}
+
+.form-field input:focus,
+.form-field textarea:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 1px;
+}
+
+.contact-info {
+  padding: var(--space-xl) 0;
+  text-align: center;
+}
+
+.contact-info p { margin-bottom: var(--space-sm); }
+
+.contact-map {
+  width: 100%;
+  height: 300px;
+  border: none;
+  border-radius: 10px;
+  margin-top: var(--space-md);
 }
