@@ -4,23 +4,23 @@
     "description": "{shortDescriptionForSEO}"
   },
   "business": {
-    "name": "{companyName}",
+    "name": "Placeholder Co.",
     "shortTag": "LLC",
-    "logo": "assets/images/logo.png",
+    "logo": "",
     "logoPosition": "left",
-    "tagline": "{tagLine}",
-    "phone": "{companyPhone}",
-    "email": "{companyEmail}@gmail.com",
+    "tagline": "Quality work you can count on",
+    "phone": "(555) 123-4567",
+    "email": "hello@placeholderco.com",
     "address": {
-      "street": "{street}",
-      "city": "{city}",
-      "state": "{state}",
-      "zip": "{zip}"
+      "street": "123 Main St",
+      "city": "Denver",
+      "state": "CO",
+      "zip": "80202"
     },
     "socialMedia": {
-      "facebook": "{FacebookURL}",
-      "instagram": "{InstagramURL}",
-      "tiktok": "{TikTokURL}"
+      "facebook": "https://facebook.com",
+      "instagram": "https://instagram.com",
+      "tiktok": ""
     },
     "socialMediaLabels": {
       "facebook": "See our work on Facebook",
@@ -28,7 +28,7 @@
       "tiktok": "See our work on TikTok"
     },
     "navCta": {
-      "enabled": false,
+      "enabled": true,
       "label": "Get an estimate",
       "href": "contact.html"
     }
@@ -40,56 +40,37 @@
   ],
   "home": {
     "intro": {
-      "eyebrow": "",
-      "headline": "",
-      "sub": "",
+      "eyebrow": "01 - Welcome",
+      "headline": "Quality Work, Straightforward Pricing.",
+      "sub": "We're a locally owned team that shows up on time, communicates clearly, and does the job right the first time.",
       "primaryCta": { "label": "See who we are", "href": "mission.html" },
       "secondaryCta": { "label": "Get in touch", "href": "contact.html" },
       "image": ""
     },
     "highlight1": { 
-      "eyebrow": "", 
-      "headline": "", 
-      "sub": "", 
+      "eyebrow": "02 — What we offer", 
+      "headline": "Services built around you.", 
+      "sub": "Whatever the project, we tailor our approach to fit your timeline and budget.", 
       "items": [
-        {
-          "tag": "",
-          "title": "",
-          "body": "",
-          "featured": false
-        },
-        {
-          "tag": "",
-          "title": "",
-          "body": "",
-          "featured": false
-        }
+        { "tag": "01", "title": "Consultation", "body": "We start by listening — understanding your goals before we ever pick up a tool.", "featured": false },
+        { "tag": "02", "title": "Custom Plans", "body": "Every project gets a plan built around your specific space and needs.", "featured": true },
+        { "tag": "03", "title": "Follow-Through", "body": "We stay in touch after the work is done, because the relationship doesn't end at the invoice.", "featured": false }
       ] 
     },
-    "highlight2": { 
-      "eyebrow": "", 
-      "headline": "", 
-      "sub": "", 
+    "highlight2": {
+      "eyebrow": "03 — Why it works",
+      "headline": "Simple, honest, reliable.",
+      "sub": "No surprises, no runaround — just clear communication from first call to final walkthrough.",
       "items": [
-        {
-          "tag": "",
-          "title": "",
-          "body": "",
-          "featured": false
-        },
-        {
-          "tag": "",
-          "title": "",
-          "body": "",
-          "featured": false
-        }
-      ] 
+        { "tag": "A", "title": "Transparent Pricing", "body": "You'll know the cost upfront, with no hidden line items later.", "featured": false },
+        { "tag": "B", "title": "Same Point of Contact", "body": "One person, start to finish — no getting bounced between departments.", "featured": false }
+      ]
     },
-    "about": { 
-      "eyebrow": "", 
-      "headline": "", 
-      "body": "", 
-      "image": "" 
+    "about": {
+      "eyebrow": "04 — About us",
+      "headline": "Built on trust, not just transactions.",
+      "body": "We started this business because we believe people deserve a company that actually cares about the outcome — not just closing the sale. Every project gets our full attention, from the first conversation to the final result.",
+      "image": ""
     }
   }, 
   "contact": {
