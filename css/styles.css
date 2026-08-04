@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@700;900&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+:root {
+  --color-bg: #fafafa;
+  --color-text: #1a1a1a;
+  --teal: #0d9488;
+  --deep-teal: #115e59;
+  --aqua: #2dd4bf;
+  --muted-blue: #6b7280;
+  --line: rgba(36,39,43,0.14);
+}
+
+*{box-sizing:border-box; margin:0; padding:0;}
+
+html{scroll-behavior:smooth;}
+
+body{
+  font-family:'Inter', sans-serif;
+  color:var(--charcoal);
+  background:var(--offwhite);
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+
+h1,h2,h3{font-family:'Archivo', sans-serif; font-weight:900; letter-spacing:-0.01em;}
+
+.mono{font-family:'IBM Plex Mono', monospace;}
+
+a{color:inherit;}
+
+img{max-width:100%; display:block;}
+
+a:focus-visible, button:focus-visible{
+  outline:3px solid var(--muted-blue);
+  outline-offset:3px;
+}
