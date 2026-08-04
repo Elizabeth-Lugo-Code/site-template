@@ -89,7 +89,7 @@ function renderContactInfo(info, business) {
     ? `<p><a href="mailto:${business.email}">${business.email}</a></p>`
     : '';
 
-  const socialHtml = info.showSocial ? renderSocialLinks({ business }) : '';
+  const socialHtml = info.showSocial ? renderSocialLinks({ business }, { asIcons: true }) : '';
 
   const mapHtml = info.mapEmbedUrl
     ? `<iframe src="${info.mapEmbedUrl}" class="contact-map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`

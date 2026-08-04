@@ -15,10 +15,18 @@ async function loadSiteData() {
   return res.json();
 }
 
-// Builds <li> links for every social platform present in data.business.socialMedia.
-// Platforms with an empty URL are skipped, so a template with only Instagram
-// filled in won't render broken Facebook/TikTok links.
-function renderSocialLinks(data) {
+// Simple inline SVG icons — kept dependency-free (no external icon library).
+// Add a new key here if a future site needs a platform not listed yet.
+const socialIcons = {
+  facebook: `<svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M22 12a10 10 0 1 0-11.5 9.9v-7H7.9V12h2.6V9.8c0-2.6 1.5-4 3.9-4 1.1 0 2.3.2 2.3.2v2.5h-1.3c-1.3 0-1.7.8-1.7 1.6V12h2.9l-.5 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg>`,
+  instagram: `<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>`,
+  tiktok: `<svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M14 3c.4 2.3 2 3.9 4.3 4.2v2.6c-1.5 0-2.9-.4-4.1-1.2v6.6a5.6 5.6 0 1 1-4.8-5.5v2.7a2.9 2.9 0 1 0 2.1 2.8V3h2.5z"/></svg>`
+};
+
+// Builds social links for every platform present in data.business.socialMedia.
+// Platforms with an empty URL are skipped. Pass { asIcons: true } to render
+// small circular icon buttons (footer) instead of text links.
+function renderSocialLinks(data, { asIcons = false } = {}) {
   const social = data.business.socialMedia || {};
   const labels = data.business.socialMediaLabels || {};
 
@@ -26,6 +34,12 @@ function renderSocialLinks(data) {
     .filter(platform => social[platform])
     .map(platform => {
       const label = labels[platform] || platform;
+
+      if (asIcons) {
+        const icon = socialIcons[platform] || '';
+        return `<li><a class="social-icon" href="${social[platform]}" target="_blank" rel="noopener" aria-label="${label}">${icon}</a></li>`;
+      }
+
       return `<li><a class="social-link" href="${social[platform]}" target="_blank" rel="noopener">${label} &#8599;</a></li>`;
     })
     .join('');
@@ -46,24 +60,21 @@ function renderNav(data) {
     ? `<img src="${data.business.logo}" alt="${data.business.name} logo" class="logo-img"><span class="logo-text">${data.business.name}</span>`
     : `<span class="dot"></span>${data.business.name.toUpperCase().replace(' LLC', '')} <span style="font-weight:500; opacity:0.6; font-size:0.85em;">${data.business.shortTag}</span>`;
 
-  // navCta is optional — off by default. A client that wants a persistent
-  // action button in the nav (e.g. "Get an estimate", "Book now") just
-  // flips enabled to true and fills in label/href; no code changes needed.
   const navCta = data.business.navCta;
   const navCtaHtml = navCta && navCta.enabled
     ? `<a href="${navCta.href}" class="nav-cta">${navCta.label}</a>`
     : '';
 
-  // logoPosition drives a class on <nav> so CSS controls the actual layout.
   const logoPosition = data.business.logoPosition || 'left';
 
+  // Social links removed from nav — they now live in the footer only,
+  // rendered as icons instead of text links.
   navRoot.innerHTML = `
     <nav class="logo-pos-${logoPosition}">
       <a href="index.html" class="logo">${logoInner}</a>
       <button class="navlinks-mobile-toggle" id="mobile-toggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
       <ul class="navlinks" id="navlinks">
         ${linksHtml}
-        ${renderSocialLinks(data)}
       </ul>
       ${navCtaHtml}
     </nav>
@@ -98,7 +109,7 @@ function renderFooter(data) {
       <div class="wrap">
         <div class="logo">${footerLogoInner}</div>
         <ul class="footer-links">${footerLinksHtml}</ul>
-        <div class="footer-social">${renderSocialLinks(data)}</div>
+        <ul class="footer-social">${renderSocialLinks(data, { asIcons: true })}</ul>
         <div class="copyright">&copy; ${currentYear} ${copyrightName}. All rights reserved.</div>
       </div>
     </footer>
@@ -118,8 +129,6 @@ function initReveal() {
   revealEls.forEach(el => io.observe(el));
 }
 
-// Boot sequence: load data, render shared chrome, then let the page-specific
-// script render main content before wiring up scroll-reveal.
 document.addEventListener('DOMContentLoaded', () => {
   loadSiteData()
     .then(data => {
