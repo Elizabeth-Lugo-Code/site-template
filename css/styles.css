@@ -80,6 +80,7 @@ a:focus-visible, button:focus-visible {
    Controls #nav-root output from site.js (renderNav).
    ============================================================ */
 nav {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;

@@ -1,9 +1,11 @@
 {
   "meta": {
+    "_note": "These values are used in the <head> of each page for SEO and social sharing.",
     "title": "{companyName} | {tagLine}",
     "description": "{shortDescriptionForSEO}"
   },
   "business": {
+    "_note": "These values are used throughout the site to populate the header, footer, and contact info.",
     "name": "Placeholder Co.",
     "shortTag": "LLC",
     "logo": "",
@@ -28,6 +30,7 @@
       "tiktok": "See our work on TikTok"
     },
     "navCta": {
+      "_note": "Controls the call-to-action button in the header navigation. Set enabled to false to hide it.",
       "enabled": true,
       "label": "Get an estimate",
       "href": "contact.html"
@@ -39,6 +42,7 @@
     { "label": "Contact", "href": "contact.html", "page": "contact" } 
   ],
   "home": {
+    "_note": "Controls the content on the homepage. Each section has an eyebrow, headline, subhead, and optional image. Highlight sections also have a list of items.",
     "intro": {
       "eyebrow": "01 - Welcome",
       "headline": "Quality Work, Straightforward Pricing.",
@@ -74,6 +78,7 @@
     }
   }, 
   "contact": {
+    "_note": "Controls the content on the contact page. The form fields are name, email, phone, and message. The info section controls whether to show the address, phone, email, and social media links.",
     "intro": {
       "eyebrow": "",
       "headline": "",
@@ -92,6 +97,7 @@
     }
   },
   "mission": {
+    "_note": "Controls the content on the mission page. Each section has an eyebrow, headline, subhead, and optional image. The values section has a list of items.",
     "intro": {
       "eyebrow": "",
       "headline": "",
@@ -113,7 +119,8 @@
     "cta": { "label": "Get in touch", "href": "contact.html" }
   },
   "footer": {
-    "copyrightName": "{companyName}",
+    "_note": "Controls the content in the footer. The copyrightName is used in the copyright line, and the links array is used to populate the footer navigation.",
+    "copyrightName": "",
     "links": [
       { "label": "Home", "href": "index.html" },
       { "label": "Our Mission", "href": "mission.html" },
