@@ -1,101 +1,142 @@
 {
+  "meta": {
+    "title": "{companyName} | {tagLine}",
+    "description": "{shortDescriptionForSEO}"
+  },
   "business": {
-    "name": "Rocksteady LLC",
+    "name": "{companyName}",
     "shortTag": "LLC",
     "logo": "assets/images/logo.png",
-    "tagline": "High quality work at an affordable price. You will not be disappointed. Happy to quote any job, big or small.",
-    "email": "rocksteadyconstructionjoe@gmail.com",
-    "facebook": "https://www.facebook.com/profile.php?id=100064109022243",
-    "facebookLabel": "See our work on Facebook"
+    "logoPosition": "left",
+    "tagline": "{tagLine}",
+    "phone": "{companyPhone}",
+    "email": "{companyEmail}@gmail.com",
+    "address": {
+      "street": "{street}",
+      "city": "{city}",
+      "state": "{state}",
+      "zip": "{zip}"
+    },
+    "socialMedia": {
+      "facebook": "{FacebookURL}",
+      "instagram": "{InstagramURL}",
+      "tiktok": "{TikTokURL}"
+    },
+    "socialMediaLabels": {
+      "facebook": "See our work on Facebook",
+      "instagram": "See our work on Instagram",
+      "tiktok": "See our work on TikTok"
+    },
+    "navCta": {
+      "enabled": false,
+      "label": "Get an estimate",
+      "href": "contact.html"
+    }
   },
-  "nav": [
+  "nav": [ 
     { "label": "Home", "href": "index.html", "page": "home" },
     { "label": "Our Mission", "href": "mission.html", "page": "mission" },
-    { "label": "Contact", "href": "contact.html", "page": "contact" }
+    { "label": "Contact", "href": "contact.html", "page": "contact" } 
   ],
-  "hero": {
-    "eyebrow": "Construction & Remodeling",
-    "headline": "Built steady.",
-    "headlineAccent": "Priced fair.",
-    "sub": "High-quality work at an affordable price — you will not be disappointed. Happy to quote any job, big or small.",
-    "primaryCta": { "label": "Request a free estimate", "href": "contact.html" },
-    "secondaryCta": { "label": "See what we do", "href": "#services" },
-    "levelLabel": "Rock steady, by design"
-  },
-  "services": {
-    "eyebrow": "01 — What we do",
-    "headline": "Full-service remodeling, inside and out.",
-    "sub": "From a single room to a full exterior overhaul — one crew, one point of contact, no subcontractor guesswork.",
-    "items": [
-      {
-        "tag": "/ INTERIOR",
-        "title": "Bathroom Remodels",
-        "body": "Full gut-and-rebuild or targeted updates — tile, fixtures, vanities, and layout changes done right the first time.",
-        "featured": false
-      },
-      {
-        "tag": "/ INTERIOR",
-        "title": "Whole-Home Renovation",
-        "body": "Kitchens, flooring, drywall, and finish carpentry. We handle the parts of the job homeowners dread coordinating.",
-        "featured": false
-      },
-      {
-        "tag": "/ CURRENTLY BUILDING",
-        "title": "Porches & Decks",
-        "body": "Outdoor living spaces built to last through Colorado weather — from framing to final finish.",
-        "featured": true
-      },
-      {
-        "tag": "/ EXTERIOR",
-        "title": "Exterior & Structural",
-        "body": "Siding, structural repair, and outdoor work that holds up. If it's attached to your house, we can likely handle it.",
-        "featured": false
-      }
-    ]
-  },
-  "process": {
-    "eyebrow": "02 — How it works",
-    "headline": "Three steps to a finished job.",
-    "sub": "No pressure, no hidden costs — just a clear path from first call to walkthrough.",
-    "steps": [
-      { "num": "01", "title": "Reach out", "body": "Tell us about the project — size, timeline, and what you're picturing. Photos help but aren't required." },
-      { "num": "02", "title": "Free estimate", "body": "We walk the site, talk through options, and give you a straightforward quote — no surprise line items later." },
-      { "num": "03", "title": "We build it", "body": "Clear communication from start to finish, with the same crew and the same point of contact throughout." }
-    ]
-  },
-  "aboutTeaser": {
-    "eyebrow": "03 — Why Rocksteady",
-    "headline": "A name that's also a promise.",
-    "quote": "High quality work at an affordable price. You will not be disappointed.",
-    "body": "That's not a slogan we picked off a template — it's how every estimate and every job gets handled here. Small crew, direct communication, and work that's built to stay level long after we've moved to the next job.",
-    "link": { "label": "Read our full mission", "href": "mission.html" }
+  "home": {
+    "intro": {
+      "eyebrow": "",
+      "headline": "",
+      "sub": "",
+      "primaryCta": { "label": "See who we are", "href": "mission.html" },
+      "secondaryCta": { "label": "Get in touch", "href": "contact.html" },
+      "image": ""
+    },
+    "highlight1": { 
+      "eyebrow": "", 
+      "headline": "", 
+      "sub": "", 
+      "items": [
+        {
+          "tag": "",
+          "title": "",
+          "body": "",
+          "featured": false
+        },
+        {
+          "tag": "",
+          "title": "",
+          "body": "",
+          "featured": false
+        }
+      ] 
+    },
+    "highlight2": { 
+      "eyebrow": "", 
+      "headline": "", 
+      "sub": "", 
+      "items": [
+        {
+          "tag": "",
+          "title": "",
+          "body": "",
+          "featured": false
+        },
+        {
+          "tag": "",
+          "title": "",
+          "body": "",
+          "featured": false
+        }
+      ] 
+    },
+    "about": { 
+      "eyebrow": "", 
+      "headline": "", 
+      "body": "", 
+      "image": "" 
+    }
+  }, 
+  "contact": {
+    "intro": {
+      "eyebrow": "",
+      "headline": "",
+      "sub": ""
+    },
+    "form": {
+      "fields": ["name", "email", "phone", "message"],
+      "submitLabel": "Send Message"
+    },
+    "info": {
+      "showAddress": true,
+      "showPhone": true,
+      "showEmail": true,
+      "showSocial": true,
+      "mapEmbedUrl": ""
+    }
   },
   "mission": {
-    "eyebrow": "Our Mission",
-    "headline": "Work that stays level, long after we leave.",
-    "intro": "Rocksteady LLC was built on a simple idea: homeowners deserve a contractor who shows up, communicates clearly, and charges a fair price for real craftsmanship. No inflated estimates, no disappearing after the deposit clears.",
-    "values": [
-      {
-        "title": "Fair pricing, every time",
-        "body": "We quote every job — big or small — the same way: honestly, and with no hidden line items added after the fact."
-      },
-      {
-        "title": "Direct communication",
-        "body": "You talk to the people actually doing the work, not a rotating cast of subcontractors and middlemen."
-      },
-      {
-        "title": "Built to last",
-        "body": "We treat every project like it has our name on it — because it does. Quality that holds up long after the job is done."
-      }
-    ],
-    "closing": "Whether it's a single bathroom or a full exterior remodel, our goal is the same: work you're not disappointed in, at a price that makes sense.",
-    "cta": { "label": "Get a free estimate", "href": "contact.html" }
+    "intro": {
+      "eyebrow": "",
+      "headline": "",
+      "sub": "",
+      "image": ""
+    },
+    "story": {
+      "eyebrow": "",
+      "headline": "",
+      "body": ""
+    },
+    "values": {
+      "eyebrow": "",
+      "headline": "",
+      "items": [
+        { "title": "", "body": "" }
+      ]
+    },
+    "cta": { "label": "Get in touch", "href": "contact.html" }
   },
-  "contact": {
-    "eyebrow": "Get in touch",
-    "headline": "Let's talk about your project.",
-    "sub": "Send a few details about the job and we'll follow up to schedule a walkthrough — no obligation.",
-    "formNote": "Opens your email client — this form doesn't submit directly from the page yet.",
-    "facebookNote": "Want to see completed work first? Check out our project photos on Facebook."
+  "footer": {
+    "copyrightName": "{companyName}",
+    "links": [
+      { "label": "Home", "href": "index.html" },
+      { "label": "Our Mission", "href": "mission.html" },
+      { "label": "Contact", "href": "contact.html" }
+    ]
   }
 }

@@ -15,6 +15,22 @@ async function loadSiteData() {
   return res.json();
 }
 
+// Builds <li> links for every social platform present in data.business.socialMedia.
+// Platforms with an empty URL are skipped, so a template with only Instagram
+// filled in won't render broken Facebook/TikTok links.
+function renderSocialLinks(data) {
+  const social = data.business.socialMedia || {};
+  const labels = data.business.socialMediaLabels || {};
+
+  return Object.keys(social)
+    .filter(platform => social[platform])
+    .map(platform => {
+      const label = labels[platform] || platform;
+      return `<li><a class="social-link" href="${social[platform]}" target="_blank" rel="noopener">${label} &#8599;</a></li>`;
+    })
+    .join('');
+}
+
 function renderNav(data) {
   const navRoot = document.getElementById('nav-root');
   if (!navRoot) return;
@@ -28,17 +44,28 @@ function renderNav(data) {
 
   const logoInner = data.business.logo
     ? `<img src="${data.business.logo}" alt="${data.business.name} logo" class="logo-img"><span class="logo-text">${data.business.name}</span>`
-    : `<span class="dot"></span>${data.business.name.toUpperCase().replace(' LLC','')} <span style="font-weight:500; opacity:0.6; font-size:0.85em;">${data.business.shortTag}</span>`;
+    : `<span class="dot"></span>${data.business.name.toUpperCase().replace(' LLC', '')} <span style="font-weight:500; opacity:0.6; font-size:0.85em;">${data.business.shortTag}</span>`;
+
+  // navCta is optional — off by default. A client that wants a persistent
+  // action button in the nav (e.g. "Get an estimate", "Book now") just
+  // flips enabled to true and fills in label/href; no code changes needed.
+  const navCta = data.business.navCta;
+  const navCtaHtml = navCta && navCta.enabled
+    ? `<a href="${navCta.href}" class="nav-cta">${navCta.label}</a>`
+    : '';
+
+  // logoPosition drives a class on <nav> so CSS controls the actual layout.
+  const logoPosition = data.business.logoPosition || 'left';
 
   navRoot.innerHTML = `
-    <nav>
+    <nav class="logo-pos-${logoPosition}">
       <a href="index.html" class="logo">${logoInner}</a>
       <button class="navlinks-mobile-toggle" id="mobile-toggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
       <ul class="navlinks" id="navlinks">
         ${linksHtml}
-        <li><a class="fb-link" href="${data.business.facebook}" target="_blank" rel="noopener">${data.business.facebookLabel} &#8599;</a></li>
+        ${renderSocialLinks(data)}
       </ul>
-      <a href="contact.html" class="nav-cta">Get an estimate</a>
+      ${navCtaHtml}
     </nav>
   `;
 
@@ -54,16 +81,25 @@ function renderFooter(data) {
   const footerRoot = document.getElementById('footer-root');
   if (!footerRoot) return;
 
+  const footer = data.footer || {};
+  const currentYear = new Date().getFullYear();
+  const copyrightName = footer.copyrightName || data.business.name;
+
   const footerLogoInner = data.business.logo
     ? `<img src="${data.business.logo}" alt="${data.business.name} logo" class="logo-img">`
     : `<span class="dot"></span>${data.business.name.toUpperCase()}`;
+
+  const footerLinksHtml = (footer.links || []).map(link =>
+    `<li><a href="${link.href}">${link.label}</a></li>`
+  ).join('');
 
   footerRoot.innerHTML = `
     <footer>
       <div class="wrap">
         <div class="logo">${footerLogoInner}</div>
-        <div>Construction &amp; Remodeling · Free estimates on any job, big or small</div>
-        <div><a href="${data.business.facebook}" target="_blank" rel="noopener">${data.business.facebookLabel} &#8599;</a></div>
+        <ul class="footer-links">${footerLinksHtml}</ul>
+        <div class="footer-social">${renderSocialLinks(data)}</div>
+        <div class="copyright">&copy; ${currentYear} ${copyrightName}. All rights reserved.</div>
       </div>
     </footer>
   `;

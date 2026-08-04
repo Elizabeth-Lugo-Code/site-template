@@ -1,36 +1,290 @@
+/* ============================================================
+   FONTS
+   ============================================================ */
 @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@700;900&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
 
+
+/* ============================================================
+   1. GLOBAL VARIABLES
+   Change these once here to reskin an entire site.
+   ============================================================ */
 :root {
   --color-bg: #fafafa;
   --color-text: #1a1a1a;
-  --teal: #0d9488;
-  --deep-teal: #115e59;
-  --aqua: #2dd4bf;
-  --muted-blue: #6b7280;
-  --line: rgba(36,39,43,0.14);
+
+  --color-primary: #0d9488;       /* was --teal — main brand color */
+  --color-primary-dark: #115e59;  /* was --dark-teal — hover states, emphasis */
+  --color-accent: #2dd4bf;        /* was --aqua — highlights, secondary accents */
+  --color-muted: #6b7280;         /* was --muted-blue — body text, subdued elements */
+  --color-line: rgba(36,39,43,0.14);
+  --color-primary-tint: rgba(13, 148, 136, 0.04); /* light background tint, e.g. featured cards */
+
+  /* spacing scale — keeps padding/margins consistent across sections */
+  --space-sm: 16px;
+  --space-md: 32px;
+  --space-lg: 64px;
+  --space-xl: 96px;
+
+  --max-width: 1200px;
 }
 
-*{box-sizing:border-box; margin:0; padding:0;}
 
-html{scroll-behavior:smooth;}
+/* ============================================================
+   2. RESET + BASE ELEMENTS
+   Applies everywhere, on every page. Don't put page-specific
+   styling here.
+   ============================================================ */
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
-body{
-  font-family:'Inter', sans-serif;
-  color:var(--charcoal);
-  background:var(--offwhite);
-  line-height:1.55;
-  -webkit-font-smoothing:antialiased;
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--color-text);
+  background: var(--color-bg);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
 }
 
-h1,h2,h3{font-family:'Archivo', sans-serif; font-weight:900; letter-spacing:-0.01em;}
+h1, h2, h3 {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 900;
+  letter-spacing: -0.01em;
+}
 
-.mono{font-family:'IBM Plex Mono', monospace;}
+.mono { font-family: 'IBM Plex Mono', monospace; }
 
-a{color:inherit;}
+a { color: inherit; text-decoration: none; }
 
-img{max-width:100%; display:block;}
+img { max-width: 100%; display: block; }
 
-a:focus-visible, button:focus-visible{
-  outline:3px solid var(--muted-blue);
-  outline-offset:3px;
+a:focus-visible, button:focus-visible {
+  outline: 3px solid var(--color-muted);
+  outline-offset: 3px;
+}
+
+
+/* ============================================================
+   3. LAYOUT UTILITIES
+   Reusable helper classes referenced by site.js/home.js output.
+   ============================================================ */
+.wrap {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+}
+
+
+/* ============================================================
+   4. NAV
+   Controls #nav-root output from site.js (renderNav).
+   ============================================================ */
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-sm) var(--space-md);
+  border-bottom: 1px solid var(--color-line);
+}
+
+/* logoPosition variants — set via data.business.logoPosition in JSON */
+nav.logo-pos-center { justify-content: center; }
+nav.logo-pos-right { flex-direction: row-reverse; }
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+}
+
+.logo-img { max-height: 40px; width: auto; }
+
+.navlinks {
+  display: flex;
+  gap: var(--space-md);
+  list-style: none;
+}
+
+.navlinks a.active { color: var(--color-primary); }
+
+.nav-cta {
+  background: var(--color-primary);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.navlinks-mobile-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* mobile nav — see section 8 for the breakpoint that activates this */
+.navlinks.open { display: flex; }
+
+
+/* ============================================================
+   5. FOOTER
+   Controls #footer-root output from site.js (renderFooter).
+   ============================================================ */
+footer {
+  border-top: 1px solid var(--color-line);
+  padding: var(--space-lg) 0;
+  margin-top: var(--space-xl);
+}
+
+footer .wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  text-align: center;
+}
+
+.footer-links {
+  display: flex;
+  gap: var(--space-md);
+  list-style: none;
+}
+
+.copyright {
+  color: var(--color-muted);
+  font-size: 0.85rem;
+}
+
+
+/* ============================================================
+   6. BUTTONS + CTAs
+   Shared across intro CTAs, mission CTA, contact form submit, etc.
+   ============================================================ */
+.btn {
+  display: inline-block;
+  padding: 14px 28px;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.btn-primary {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.btn-primary:hover { background: var(--color-primary-dark); }
+
+.btn-ghost {
+  background: transparent;
+  border: 1px solid var(--color-line);
+  color: var(--color-text);
+}
+
+.btn-ghost:hover { border-color: var(--color-primary); color: var(--color-primary); }
+
+
+/* ============================================================
+   7. HOME PAGE SECTIONS
+   Controls output from home.js (renderIntro, renderHighlight, renderAbout).
+   Only applies where these classes appear — i.e. only on index.html.
+   ============================================================ */
+.intro {
+  padding: var(--space-xl) 0;
+  text-align: center;
+}
+
+.eyebrow, .section-num {
+  font-family: 'IBM Plex Mono', monospace;
+  color: var(--color-primary);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-sm);
+}
+
+.intro h1 { font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: var(--space-sm); }
+
+.sub {
+  color: var(--color-muted);
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto var(--space-md);
+}
+
+.intro-ctas {
+  display: flex;
+  gap: var(--space-sm);
+  justify-content: center;
+}
+
+.highlight { padding: var(--space-xl) 0; }
+
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: var(--space-md);
+  gap: var(--space-md);
+}
+
+.highlight-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-md);
+}
+
+.highlight-card {
+  border: 1px solid var(--color-line);
+  border-radius: 10px;
+  padding: var(--space-md);
+}
+
+.highlight-card.featured {
+  border-color: var(--color-primary);
+  background: var(--color-primary-tint);
+}
+
+.about { padding: var(--space-xl) 0; }
+
+
+/* ============================================================
+   8. MOBILE / RESPONSIVE
+   ============================================================ */
+@media (max-width: 768px) {
+  .navlinks-mobile-toggle { display: block; }
+
+  .navlinks {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background: var(--color-bg);
+    padding: var(--space-md);
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  .intro-ctas { flex-direction: column; }
+
+  .section-head { flex-direction: column; align-items: flex-start; }
+}
+
+
+/* ============================================================
+   9. SCROLL-REVEAL ANIMATION
+   Controls .reveal / .reveal.in toggled by initReveal() in site.js.
+   ============================================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.in {
+  opacity: 1;
+  transform: translateY(0);
 }
